@@ -1,0 +1,1 @@
+commons-logging.jar，干嘛用的呢？主要用来解决报错Caused by: java.lang.ClassNotFoundException:org.apache.commons.logging.LogFactory的问题，有需要的赶快下载吧！
