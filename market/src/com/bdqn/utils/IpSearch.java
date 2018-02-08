@@ -1,5 +1,7 @@
 package com.bdqn.utils;
 
+import org.springframework.stereotype.Repository;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -10,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Description: ${todo}(用一句话描述该文件做什么)
  * @date ${date} ${time}
  */
+@Repository
 public class IpSearch {
     /**
      * 获取登录用户IP地址
@@ -17,7 +20,7 @@ public class IpSearch {
      * @param request
      * @return
      */
-    public static String getIpAddr(HttpServletRequest request) {
+    public  String getIpAddr(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");

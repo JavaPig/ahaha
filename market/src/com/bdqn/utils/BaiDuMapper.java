@@ -1,5 +1,7 @@
 package com.bdqn.utils;
 
+import org.springframework.stereotype.Repository;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -17,6 +19,7 @@ import java.net.URL;
  * @Description: ${todo}(用一句话描述该文件做什么)
  * @date ${date} ${time}
  */
+@Repository
 public class BaiDuMapper {
     /**
      *
@@ -136,7 +139,7 @@ public class BaiDuMapper {
      * @param theString
      * @return
      */
-    public static String decodeUnicode(String theString) {
+    public  String decodeUnicode(String theString) {
         char aChar;
         int len = theString.length();
         StringBuffer outBuffer = new StringBuffer(len);
