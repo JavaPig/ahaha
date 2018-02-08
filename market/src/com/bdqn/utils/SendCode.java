@@ -1,4 +1,4 @@
-﻿package com.bdqn.utils;
+package com.bdqn.utils;
 
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
@@ -9,15 +9,15 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 
 public class SendCode {
-	static final String product = "Dysmsapi";
-	//产品域名,开发者无需替换
-	static final String domain = "dysmsapi.aliyuncs.com";
-	
-	// TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-	static final String accessKeyId = "LTAImmRUibPmArPj";
-	static final String accessKeySecret = "UuDuhRuqoyyzBZcYjhH5Y5G0O6sGzg";
-	public static SendSmsResponse sendSms(String phone,String code) throws ClientException {
-	    //可自助调整超时时间
+    static final String product = "Dysmsapi";
+    //产品域名,开发者无需替换
+    static final String domain = "dysmsapi.aliyuncs.com";
+
+    // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
+    static final String accessKeyId = "LTAImmRUibPmArPj";
+    static final String accessKeySecret = "UuDuhRuqoyyzBZcYjhH5Y5G0O6sGzg";
+    public static SendSmsResponse sendSms(String phone,String code) throws ClientException {
+        //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "5000");
         System.setProperty("sun.net.client.defaultReadTimeout", "5000");
 
@@ -41,14 +41,14 @@ public class SendCode {
         //request.setSmsUpExtendCode("90997");
 
         //可选:outId为提供给业务方扩展字段,最终在短信回执消息中将此值带回给调用者
-       /* request.setOutId("yourOutId");*/
+        /* request.setOutId("yourOutId");*/
 
         //hint 此处可能会抛出异常，注意catch
         SendSmsResponse sendSmsResponse = acsClient.getAcsResponse(request);
 
         return sendSmsResponse;
-	}
-	/*public static void main(String[] args) throws ClientException {
-		SendCode.sendSms("15600695878","123456");
-	}*/
+    }
+    public static void main(String[] args) throws ClientException {
+        SendCode.sendSms("15600695878","123456");
+    }
 }
