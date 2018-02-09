@@ -30,6 +30,11 @@ body,html{font:12px/1.5 "微软雅黑",Arial;color:#666;}
 	padding:20px;
 	background:#fff;
 }
+.firstSpan{
+	display: inline-block;
+	font-size:18px;
+	color: red;
+}
 .login-form h2{
 	font-weight:normal;
 	font-size:20px;

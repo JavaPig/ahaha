@@ -3,9 +3,21 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.bdqn.dao.UserMapper">
+    <!--查全部-->
     <select id="findAll" resultType="User">
         select *from `user`
     </select>
-
+    <!--查询一个用户-->
+        <select id="getUser" resultType="User">
+            select * from user
+            <trim prefix="where" prefixOverrides="and | or">
+                <if test="uname != null">
+                    and uname = #{uname}
+                </if>
+                <if test="upwd != null">
+                    and upwd = #{upwd}
+                </if>
+            </trim>
+        </select>
 </mapper>
  

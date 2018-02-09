@@ -26,11 +26,28 @@ public class UserController {
 
     @RequestMapping("getLogin")
     public String getLogin(Model model){
-        List<User> list=userService.findAll();
-        model.addAttribute("list",list);
         return "login";
     }
-
+    //登录
+    @RequestMapping("doLogin")
+    public String doLogin(User user,Model model,HttpServletRequest request){
+        String uname=user.getUname();
+        String upwd=user.getUpwd();
+        if (user==null&&user.equals("")){
+            model.addAttribute("error","登录失败,请重新登录");
+            return "login";
+        }else {
+            User user1=userService.getUser(uname,upwd);
+            if (null!=user1) {
+                request.getSession().setAttribute("user1",user1);
+                return "doLogin";
+            }else {
+                model.addAttribute("error", "登录失败,请重新登录!");
+                return "login";
+            }
+        }
+    }
+    //地图
     @RequestMapping("getMap")
     public String getMap(Model model, HttpServletRequest request){
         String ipSearchs= ipSearch.getIpAddr(request);
