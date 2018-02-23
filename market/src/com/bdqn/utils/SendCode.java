@@ -7,16 +7,19 @@ import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public class SendCode {
-    static final String product = "Dysmsapi";
+     final String product = "Dysmsapi";
     //产品域名,开发者无需替换
-    static final String domain = "dysmsapi.aliyuncs.com";
+     final String domain = "dysmsapi.aliyuncs.com";
 
     // TODO 此处需要替换成开发者自己的AK(在阿里云访问控制台寻找)
-    static final String accessKeyId = "LTAImmRUibPmArPj";
-    static final String accessKeySecret = "UuDuhRuqoyyzBZcYjhH5Y5G0O6sGzg";
-    public static SendSmsResponse sendSms(String phone,String code) throws ClientException {
+     final String accessKeyId = "LTAImmRUibPmArPj";
+     final String accessKeySecret = "UuDuhRuqoyyzBZcYjhH5Y5G0O6sGzg";
+    public  SendSmsResponse sendSms(String phone,String code) throws ClientException {
         //可自助调整超时时间
         System.setProperty("sun.net.client.defaultConnectTimeout", "5000");
         System.setProperty("sun.net.client.defaultReadTimeout", "5000");
@@ -48,7 +51,7 @@ public class SendCode {
 
         return sendSmsResponse;
     }
-    public static void main(String[] args) throws ClientException {
+    /*public static void main(String[] args) throws ClientException {
         SendCode.sendSms("15600695878","123456");
-    }
+    }*/
 }

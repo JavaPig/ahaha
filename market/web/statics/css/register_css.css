@@ -1,0 +1,274 @@
+.header {
+    height: 110px;
+    background: url(//misc.360buyimg.com/user/reg/1.0.0/css/i/headbg.jpg) repeat-x left bottom;
+}
+
+.header .have-account {
+    font-size: 16px;
+    float: right;
+    margin-top: 55px;
+    color: #999;
+}
+
+.root61 .w {
+    width: 1210px;
+}
+
+.root61 .w {
+    width: 1210px;
+}
+
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.clearfix {
+}
+
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.clearfix {
+    display: block;
+}
+
+.header .logo-title {
+    float: left;
+    height: 34px;
+    line-height: 34px;
+    font-size: 24px;
+    color: #333;
+    padding-left: 20px;
+    margin-top: 34px;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+
+.reg-form {
+    width: 400px;
+    position:absolute;
+    top:20%;
+    left:30%;
+}
+
+.fl {
+    float: left;
+}
+
+
+
+a, address, b, big, blockquote, body, center, cite, code, dd, del, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, label, legend, li, ol, p, pre, small, span, strong, u, ul, var {
+    margin: 0;
+    padding: 0;
+}
+
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    margin: 0;
+    padding: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+Inherited from body
+
+body {
+    font-size: 14px;
+}
+
+body, button, input, txt {
+    font-family: "Microsoft YaHei","Hiragino Sans GB";
+}
+
+body {
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+    -webkit-font-smoothing: antialiased;
+    color: #666;
+    background: #fff;
+}
+
+
+body {
+    font: 12px/150% Arial,Verdana,"\5b8b\4f53";
+    color: #666;
+    background: #fff;
+    /*_background-image: url(about:blank);*/
+    _background-attachment: fixed;
+}
+/*margin‒
+‒border‒
+‒padding‒
+‒400 × 484‒
+          ‒‒
+          ‒‒
+          ‒
+
+
+          Show all
+          color:
+rgb(102, 102, 102)
+;
+display:
+block
+;
+float:
+left*/
+
+
+.form-item-account {
+    z-index: 13;
+}
+
+.form-item {
+    position: relative;
+    border: solid 1px #ddd;
+    width: 398px;
+    height: 52px;
+    z-index: 0;
+}
+
+.form-item label {
+    float: left;
+    width: 90px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 20px;
+}
+
+.form-item txt {
+    margin-top: 2px!important;
+}
+
+
+element.style {
+    position: absolute;
+    z-index: 2;
+    line-height: 46px;
+    margin-left: 20px;
+    margin-top: 1px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", "Hiragino Sans GB";
+    color: rgb(204, 204, 204);
+    display: inline;
+}
+
+.form-item .field {
+    border: 0 none;
+    font-size: 14px;
+    width: 190px;
+    height: 19px;
+    padding-bottom: 11px;
+    padding-left: 20px;
+    padding-top: 16px;
+}
+
+
+body, button, input, txt {
+    font-family: "Microsoft YaHei","Hiragino Sans GB";
+}
+
+button, input, select, textarea {
+    outline: 0;
+}
+user agent stylesheet
+/*input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+    padding: 1px 0px;
+}
+user agent stylesheet*/
+input {
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    user-select: text;
+    cursor: auto;
+    padding: 1px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+user agent stylesheet
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+user agent stylesheet
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
+}
+
+.input-tip {
+    color: #c5c5c5;
+    height: 27px;
+    font-size: 12px;
+    padding-top: 5px;
+}
+
+.btn-register {
+    width: 100%;
+    height: 54px;
+    color: #fff;
+    background: #e22;
+    border: 0;
+    font-size: 16px;
+    font-family: "Microsoft YaHei","Hiragino Sans GB";
+}
+
+button {
+    align-items: flex-start;
+    text-align: center;
+}
+
+
+
+.footer {
+    /*font-size: 12px;
+
+    border-top: solid 1px #e6e6e6;
+    color: #999;
+    padding-bottom: 30px;*/
+    position: fixed;
+    bottom:20px;
+    text-align: center;
+    }
+
+.w {
+    width: 990px;
+    margin: 0 auto;
+}
+
+.root61 .w {
+    width: 1210px;
+}
+
+.input-tip .error {
+    color: #e22;
+}
+
+div {
+    display: block;
+}
+
+.footer .links {
+    padding-top: 30px;
+    padding-bottom: 15px;
+}

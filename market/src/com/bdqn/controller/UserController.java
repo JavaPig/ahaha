@@ -4,7 +4,7 @@ import com.bdqn.entity.User;
 import com.bdqn.service.UserService;
 import com.bdqn.utils.BaiDuMapper;
 import com.bdqn.utils.IpSearch;
-import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.bdqn.utils.SendCode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 @Controller
 @RequestMapping("userController")
@@ -23,6 +22,8 @@ public class UserController {
     private BaiDuMapper baiDuMapper;
     @Resource
     private IpSearch ipSearch;
+    @Resource
+    private SendCode SendCode;
 
     @RequestMapping("getLogin")
     public String getLogin(Model model){
