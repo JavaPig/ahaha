@@ -1,5 +1,6 @@
 package com.bdqn.controller;
 
+import com.aliyuncs.exceptions.ClientException;
 import com.bdqn.entity.User;
 import com.bdqn.service.UserService;
 import com.bdqn.utils.BaiDuMapper;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 @Controller
 @RequestMapping("userController")
@@ -23,7 +25,9 @@ public class UserController {
     @Resource
     private IpSearch ipSearch;
     @Resource
-    private SendCode SendCode;
+    private SendCode sendCode;
+
+    String phoneCode=null;
 
     @RequestMapping("getLogin")
     public String getLogin(Model model){
@@ -48,6 +52,70 @@ public class UserController {
             }
         }
     }
+    //注册
+    @RequestMapping("getRegister")
+    public String getRegister(Model model){
+        return "register";
+    }
+    //去注册
+    @RequestMapping("doRegister")
+    public String doRegister(User user,HttpServletRequest request,Model model) {
+        //注册用户名
+        String uname = user.getUname();
+        //注册密码
+        String upwd = user.getUpwd();
+        //确认密码
+        String pwdRepeat = request.getParameter("pwdRepeat");
+        //获取手机号码
+        String uphone = request.getParameter("uphone");
+
+        //获取用户输入的验证码
+        String mobileCode = request.getParameter("mobileCode");
+        //获取数据库所有用户
+        List<User> lists = userService.findAll();
+        //遍历判断新注册用户名是否存在
+        for (int i = 0; i <= lists.size(); i++) {
+            if (lists.get(i).getUname().equals(uname)) {
+                return "register";
+            }
+        }
+        //判断两次输入的密码是否一致
+        if (!upwd.equals(pwdRepeat)) {
+            return "register";
+        } else {
+            if (!phoneCode.equals(mobileCode)) {
+                return "register";
+            }else{
+                return  "index";
+            }
+
+
+        }
+    }
+
+
+    @RequestMapping("sendCode")
+    public void sendCode(HttpServletRequest request){
+        String uphone=request.getParameter("uphone");
+
+        for(int i=0;i<=4;i++){
+            String str=Math.random()*10+"";
+            phoneCode=phoneCode+str;
+        }
+        try {
+            sendCode.sendSms(uphone,phoneCode);
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
+
+
+
+
     //地图
     @RequestMapping("getMap")
     public String getMap(Model model, HttpServletRequest request){
@@ -65,5 +133,8 @@ public class UserController {
         model.addAttribute("ipSearchs",ipSearchs);
         return "BaiDuMap";
     }
-
+    @RequestMapping("register")
+    public String doRegister(){
+        return "register";
+    }
 }

@@ -1,20 +1,50 @@
-<html lang="en"><head>
-    <meta charset="UTF-8">
+<%--
+  Created by IntelliJ IDEA.
+  User: Administrator
+  Date: 2018年2月24日,0024
+  Time: 14:53
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
     <title>个人注册</title>
     <link rel="stylesheet" href="../../statics/css/register_css.css" type="text/css">
+    <script type="text/javascript" src="../../statics/js/jquery-1.12.4.min.js"/>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#getPhoneCode").onclick(function () {
+                var uphone = $("#uphone").val();
+                if (uphone == null || uphone == "") {
+                    /*$("#phoneCss").focus(function () {
+                        $("#phoneCss").css("background-color","blue");
+                    })*/
+                } else {
+                    $.ajax({
+                        "url": "sendCode",//要提交的路径
+                        "Type": "post",//提交方式
+                        "data": "uphone=" + uphone,//发送到服务器的数据
+                        "dataType": "text",//指定返回的数据格式
+                        "success": function (data) {
+                        },//响应成功后要执行代码
+                        /* "error"		: function() { //请求失败后要执行代码
+                             $("#codeMiss").html("短信验证码错误！");
+                         }*/
+                    });
+                }
+            })
+        })
+    </script>
 </head>
 <body>
 <div id="form-header" class="header">
     <div class="logo-con w clearfix">
-        <a href="//www.jd.com" class="logo">
-        </a>
+        <!--<a href="//www.jd.com" class="logo"> </a>-->
+        <div class="img"><img src="../../statics/images/logo.png" alt="京东"></div>
         <div class="logo-title">欢迎注册</div>
-        <div class="have-account">已有账号？ <a href="//passport.jd.com/new/login.aspx">请登录</a></div>
+        <div class="have-account">已有账号？ <a href="userController/getLogin">请登录</a></div>
     </div>
-
 </div>
-
-
 <div class="reg-form fl">
     <form action="" id="register-form" method="post" novalidate="novalidate">
         <input type="hidden" name="new" value="new_person_reg">
@@ -41,7 +71,8 @@
 
         <div class="form-item form-item-account" id="form-item-account">
             <label>用　户　名</label>
-            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family:&quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">您的账户名和登录名</txt><input type="text" id="form-account" name="regName" class="field" autocomplete="off" maxlength="20" placeholder=" " default="<i class=&quot;i-def&quot;></i>支持中文、字母、数字、“-”“_”的组合，4-20个字符">
+            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
+            <input type="text" id="form-account" name="uname" class="field" autocomplete="off" maxlength="20" placeholder="您的账户名和登录名"  default="<i class=&quot;i-def&quot;></i>支持中文、字母、数字、“-”“_”的组合，4-20个字符">
             <i class="i-status"></i>
         </div>
         <div class="input-tip">
@@ -49,8 +80,8 @@
         </div>
         <div class="form-item" style="z-index: 12;">
             <label>设 置 密 码</label>
-
-            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">建议至少使用两种字符组合</txt><input type="password" name="pwd" id="form-pwd" class="field" maxlength="20" placeholder=" " default="<i class=i-def></i>建议使用字母、数字和符号两种及以上的组合，6-20个字符">
+            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
+            <input type="password" name="upwd" id="form-pwd" class="field" maxlength="20" placeholder="建议至少使用两种字符组合" default="<i class=i-def></i>建议使用字母、数字和符号两种及以上的组合，6-20个字符">
             <i class="i-status"></i>
             <div class="capslock-tip tips" style="display: none;">大写已开启<b class="arrow"></b><b class="arrow-inner"></b></div><div class="capslock-tip tips" style="display: none;">大写已开启<b class="arrow"></b><b class="arrow-inner"></b></div></div>
         <div class="input-tip">
@@ -58,34 +89,23 @@
         </div>
         <div class="form-item" style="z-index: 12;">
             <label>确 认 密 码</label>
-
-            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">请再次输入密码</txt><input type="password" name="pwdRepeat" id="form-equalTopwd" class="field" placeholder=" " maxlength="20" default="<i class=&quot;i-def&quot;></i>请再次输入密码">
+            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
+            <input type="password" name="pwdRepeat" id="form-equalTopwd" class="field" placeholder=" 请再次输入密码" maxlength="20" default="<i class=&quot;i-def&quot;></i>请再次输入密码">
             <i class="i-status"></i>
             <div class="capslock-tip tips" style="display: none;">大写已开启<b class="arrow"></b><b class="arrow-inner"></b></div><div class="capslock-tip tips" style="display: none;">大写已开启<b class="arrow"></b><b class="arrow-inner"></b></div></div>
         <div class="input-tip">
             <span></span>
         </div>
-        <div class="item-email-wrap" style="display: none;">
-            <div class="form-item">
-
-                <txt style="position: absolute; z-index: 2; line-height: 52px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">建议使用常用邮箱</txt><input type="text" name="email" id="form-email" class="field ignore" autocomplete="off" placeholder=" " default="<i class=&quot;i-def&quot;></i>完成验证后，你可以用该邮箱登录和找回密码">
-                <i class="i-status"></i>
-                <ul class="suggest-container email-suggest"><li class=""><div class="value">@qq.com</div></li><li class=""><div class="value">@163.com</div></li><li class=""><div class="value">@126.com</div></li><li class=""><div class="value">@Sina.com</div></li><li class=""><div class="value">@Sohu.com</div></li><li class="suggest-li-last "><div class="value">@Gmail.com</div></li></ul></div>
-            <div class="input-tip">
-                <span></span>
-            </div>
-            <div class="orPhone"><a href="javascript:;">手机验证</a></div>
-        </div>
         <div class="item-phone-wrap">
             <div class="form-item form-item-phone">
                 <label class="select-country" id="select-country" country_id="0086">中国 0086<a href="javascript:void(0)" tabindex="-1" class="arrow"></a></label>
-                <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 7px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">建议使用常用手机</txt><input type="text" id="form-phone" name="phone" class="field" placeholder=" " autocomplete="off" maxlength="11" default="<i class=&quot;i-def&quot;></i>完成验证后，你可以用该手机登录和找回密码">
+                <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 7px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
+                <input type="text" id="form-phone" name="uphone" class="field" placeholder="建议使用常用手机" autocomplete="off" maxlength="11" default="<i class=&quot;i-def&quot;></i>完成验证后，你可以用该手机登录和找回密码">
                 <i class="i-status"></i>
             </div>
             <div class="input-tip">
                 <span></span>
             </div>
-
         </div>
         <input id="authcode" name="authcode" type="hidden">
         <input id="slideAppId" name="slideAppId" value="1604ebb2287" type="hidden">
@@ -96,10 +116,10 @@
         <input id="slideSuccessMsg" value="" type="hidden">
         <div id="slideAuthCode" class="JDValidate-wrap">
         </div>
-
         <div class="form-item form-item-phonecode">
             <label>手机验证码</label>
-            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;">请输入手机验证码</txt><input type="text" name="mobileCode" maxlength="6" id="phoneCode" class="field phonecode" placeholder=" " autocomplete="off">
+            <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
+            <input type="text" name="mobileCode" maxlength="6" id="phoneCode" class="field phonecode" placeholder="请输入手机验证码" autocomplete="off">
             <button id="getPhoneCode" class="btn-phonecode" type="button">获取验证码</button>
             <i class="i-status"></i>
         </div>
@@ -110,12 +130,8 @@
             <button type="submit" class="btn-register">立即注册</button>
         </div>
 
-    </form><div id="country_code_layer" style="display: none; top: 1440px; left: 759.5px;"><iframe frameborder="0" scrolling="no" style="background-color:transparent; position: absolute; z-index: -1; width: 100%; height: 100%; top: 0; left:0;"></iframe><div><a class="arrow"></a><div class="search-bar"><b class="search-icon"></b><input type="text" placeholder="搜索您的国家和地区" id="inputSearch"></div><div id="result"><div class="capital-list"><ul></ul></div><div class="current-capital"><span id="currentCapital">A</span><span class="line"></span></div><div class="country-list"><div id="scrollbar2" class="scrollbar_all"><div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div><div class="viewport"><div class="overview"><ul></ul></div></div></div></div></div><div id="no-result">未找到国家或地区</div></div></div>
-</div>
-
-
-
-<div id="form-footer" class="footer w">
+    </form>
+<div id="form-footer" class="footer w" align="center">
     <div class="links">
         <a rel="nofollow" target="_blank" href="//www.jd.com/intro/about.aspx"> 关于我们</a>|
         <a rel="nofollow" target="_blank" href="//www.jd.com/contact/">联系我们</a>|
@@ -134,15 +150,5 @@
     </div>
 </div>
 
-
-
-
-
-
-
-<script language="VBScript"><!--
-
-//--></script></body></html>
-<SCRIPT Language=VBScript><!--
-
-//--></SCRIPT>
+</body>
+</html>
