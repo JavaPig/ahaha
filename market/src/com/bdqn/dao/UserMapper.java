@@ -9,5 +9,7 @@ public interface UserMapper {
     //全查
     List<User> findAll();
     //查用户
-    User getUser(@Param("uname")String name,@Param("upwd")String upwd);
+    User getUser(@Param("uname")String uname,@Param("upwd")String upwd);
+    //增加用户
+    int addUser(User user);
 }

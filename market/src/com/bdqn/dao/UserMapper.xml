@@ -5,7 +5,7 @@
 <mapper namespace="com.bdqn.dao.UserMapper">
     <!--查全部-->
     <select id="findAll" resultType="User">
-        select *from `user`
+       SELECT  * FROM `user`
     </select>
     <!--查询一个用户-->
         <select id="getUser" resultType="User">
@@ -19,5 +19,8 @@
                 </if>
             </trim>
         </select>
+    <insert id="addUser" parameterType="User">
+      INSERT INTO USER(uname,upwd) VALUES(#{uname},#{upwd})
+    </insert>
 </mapper>
  

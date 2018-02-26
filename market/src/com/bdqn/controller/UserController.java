@@ -57,56 +57,75 @@ public class UserController {
     public String getRegister(Model model){
         return "register";
     }
-    //去注册
+
+    /**
+     *
+     * @param user
+     * @param request
+     * @param model
+     * @return
+     * 去注册
+     */
     @RequestMapping("doRegister")
     public String doRegister(User user,HttpServletRequest request,Model model) {
+        //获取数据库所有用户
+        List<User> lists = userService.findAll();
         //注册用户名
         String uname = user.getUname();
         //注册密码
         String upwd = user.getUpwd();
         //确认密码
-        String pwdRepeat = request.getParameter("pwdRepeat");
+       String pwdRepeat = request.getParameter("pwdRepeat");
         //获取手机号码
         String uphone = request.getParameter("uphone");
-
         //获取用户输入的验证码
         String mobileCode = request.getParameter("mobileCode");
-        //获取数据库所有用户
-        List<User> lists = userService.findAll();
         //遍历判断新注册用户名是否存在
-        for (int i = 0; i <= lists.size(); i++) {
+        for (int i = 0; i <lists.size(); i++) {
             if (lists.get(i).getUname().equals(uname)) {
                 return "register";
             }
         }
         //判断两次输入的密码是否一致
-        if (!upwd.equals(pwdRepeat)) {
+      if (!upwd.equals(pwdRepeat)) {
             return "register";
         } else {
+            //判断验证码
             if (!phoneCode.equals(mobileCode)) {
                 return "register";
             }else{
-                return  "index";
+                User newUser=new User();
+                newUser.setUname(uname);
+                newUser.setUpwd(upwd);
+                //新注册会员加进数据库
+                userService.addUser(newUser);
+
+                return  "doLogin";
             }
 
-
         }
+
     }
 
-
+    /**
+     *
+     * @param request
+     * 发送手机短信验证码
+     */
     @RequestMapping("sendCode")
     public void sendCode(HttpServletRequest request){
         String uphone=request.getParameter("uphone");
-
-        for(int i=0;i<=4;i++){
-            String str=Math.random()*10+"";
-            phoneCode=phoneCode+str;
-        }
+        //随机生成4位数的验证码
+       int str=(int)((Math.random()*9+1)*1000);
+            phoneCode=str+"";
+           /* System.out.println(phoneCode);*/
         try {
+            //给用户手机发送验证码
             sendCode.sendSms(uphone,phoneCode);
         } catch (ClientException e) {
             e.printStackTrace();
         }
+
 
     }
 

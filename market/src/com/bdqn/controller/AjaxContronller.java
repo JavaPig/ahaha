@@ -20,9 +20,12 @@ public class AjaxContronller extends HttpServlet{
     private UserServiceImpl UserServiceImpl;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String name = req.getParameter("name");
+
+        String uphone = req.getParameter("uphone");
+        System.out.println("22222222222222222222222222222");
+        System.out.println(uphone);
         boolean used = false;
-        if("ajax".equals(name)){
+        if("ajax".equals(uphone)){
             used = true;
         }else{
             used = false;

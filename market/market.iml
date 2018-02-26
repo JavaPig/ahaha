@@ -57,5 +57,8 @@
     <orderEntry type="library" name="taglibs-standard-spec-1.2.5" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="aliyun-java-sdk-core-3.3.1" level="project" />
+    <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="aliyun-java-sdk-core-3.3.1" level="project" />
+    <orderEntry type="library" name="taglibs-standard-impl-1.2.5" level="project" />
   </component>
 </module>
