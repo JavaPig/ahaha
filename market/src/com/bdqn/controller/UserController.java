@@ -29,7 +29,7 @@ public class UserController {
 
     String phoneCode=null;
 
-    @RequestMapping("getLogin")
+    @RequestMapping("goLogin")
     public String getLogin(Model model){
         return "login";
     }
@@ -45,7 +45,8 @@ public class UserController {
             User user1=userService.getUser(uname,upwd);
             if (null!=user1) {
                 request.getSession().setAttribute("user1",user1);
-                return "doLogin";
+
+                return "redirect('/index.jsp');";
             }else {
                 model.addAttribute("error", "登录失败,请重新登录!");
                 return "login";
@@ -53,7 +54,7 @@ public class UserController {
         }
     }
     //注册
-    @RequestMapping("getRegister")
+    @RequestMapping("goRegister")
     public String getRegister(Model model){
         return "register";
     }

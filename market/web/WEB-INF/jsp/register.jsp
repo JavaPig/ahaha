@@ -91,7 +91,7 @@
         <!--<a href="//www.jd.com" class="logo"> </a>-->
         <div class="img"><img src="../../statics/images/logo.png" alt="京东"></div>
         <div class="logo-title">欢迎注册</div>
-        <div class="have-account">已有账号？ <a href="userController/getLogin">请登录</a></div>
+        <div class="have-account">已有账号？ <a href="goLogin">请登录</a></div>
     </div>
 </div>
 <div class="reg-form fl">

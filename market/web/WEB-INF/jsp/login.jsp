@@ -27,7 +27,7 @@
     <div class="wrap">
         <div style="height:475px;background:url(../../statics/images/banner.png) no-repeat left top">
             <div class="login-form">
-                <h2>京东会员 <a href="">立即注册</a></h2>
+                <h2>京东会员 <a href="goRegister">立即注册</a></h2>
                 <span class="firstSpan">${error}</span>
                 <form action="doLogin" id="submit1" method="post" >
                     <div class="item">
