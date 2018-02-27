@@ -12,26 +12,12 @@
     <link rel="stylesheet" href="../../statics/css/register_css.css" type="text/css">
     <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
 
-<%--<script type="text/javascript">
-
-    $(document).ready(function () {
-        $("#abc").click(function () {
-            alert(16516516516);
-        })
-    })
-</script>--%>
-
-
-
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#getPhoneCode").click(function() {
+        $(document).ready(function () {
+            $("#getPhoneCode").click(function () {
                 var uphone = $("#form-phone").val();
-                alert(uphone);
                 if (uphone == null || uphone == "") {
-                    /*$("#phoneCss").focus(function () {
-                        $("#phoneCss").css("background-color","blue");
-                    })*/
+                    $("#form-phone").focus();
                 } else {
                     $.ajax({
                         "url": "sendCode",//要提交的路径
@@ -41,8 +27,9 @@
                         "success": function (data) {
                         },//响应成功后要执行代码
                         /* "error"		: function() { //请求失败后要执行代码
-                             $("#codeMiss").html("短信验证码错误！");
-                         }*/
+                             alert("短信验证码错误！");
+                             /!* $("#codeMiss").html("短信验证码错误！");*!/
+                          }*/
                     });
                     //响应成功时的回调函数
                     /*function callBack(data) {
@@ -59,57 +46,41 @@
 
 
 
-
-
-    <%--<script type="text/javascript">
-        var obj = document.getElementById("getPhoneCode");
-        var flag = 10;
-        //注册点击事件
-        obj.onclick=function(){
-            if(flag<10){
-                return;
-            }
-            //ajax引擎（浏览器内部的小型浏览器）
-            var xhr = new XMLHttpRequest();
-            //相当于你打开浏览器输入需要访问的地址
-            xhr.open("get","getPhoneCode.do?form-phone="+document.getElementById("form-phone").value,true);
-            //监控请求状态 判断是否请求完成，回调函数，事件监听函数
-            xhr.onreadystatechange=function(){
-                if(xhr.readyState==4&&xhr.status==200){
-                    //alert(xhr.responseText);
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var code= document.getElementById("getPhoneCode");
+            var flag=10;
+            $("#getPhoneCode").click(function () {
+                if(flag<120){
+                    return;
                 }
-            }
-            xhr.send(null);
-            timer();
-        }
-        function validate(){
-            //ajax引擎（浏览器内部的小型浏览器）
-            var xhr = new XMLHttpRequest();
-            //相当于你打开浏览器输入需要访问的地址
-            xhr.open("get","ValidateCode?code="+document.getElementById("code").value,true);
-            //监控请求状态 判断是否请求完成，回调函数，事件监听函数
-            xhr.onreadystatechange=function(){
-            xhr.send(null);
-            if(xhr.readyState==4&&xhr.status==200){
-                alert(xhr.responseText);
-            }
-        }
-        }
-        function timer(){
-            flag--;
-            obj.innerHTML=flag+"秒以后重新获取！";
-            if(flag==0){
-                obj.innerHTML="获取验证码";
-                flag =10;
-            }else{
-
-                setTimeout("timer()",1000);
-            }
-        }
+                var timeOut=setInterval(function timer() {
+                    flag--;
+                    code.innerHTML=flag+"秒后重新获取验证码";
+                    if(flag==0){
+                        code.innerHTML="获取验证码";
+                        flag=10;
+                        clearInterval(timeOut);
+                    }
+                },1000);
+            })
+        })
     </script>
---%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#form-phone").blur(function () {
+            var flag=120;
+            var  phone=$("#form-phone").val();
+            if(phone==null||phone==""){
+                alert("手机号码不能为空");
+            }else if(!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(phone))){
+                alert("该号码不存在");
+            }else {
+            }
+        })
 
-
+    })
+</script>
 
 
 
@@ -214,8 +185,7 @@
             <txt style="position: absolute; z-index: 2; line-height: 46px; margin-left: 20px; margin-top: 1px; font-size: 14px; font-family: &quot;Microsoft YaHei&quot;, &quot;Hiragino Sans GB&quot;; color: rgb(204, 204, 204); display: inline;"></txt>
             <input type="text" name="mobileCode" maxlength="6" id="phoneCode" class="field phonecode"
                    placeholder="请输入手机验证码" autocomplete="off">
-           <button id="getPhoneCode" class="btn-phonecode" type="button">获取验证码</button>
-
+            <button id="getPhoneCode" class="btn-phonecode" type="button">获取验证码</button>
 
 
             <i class="i-status"></i>

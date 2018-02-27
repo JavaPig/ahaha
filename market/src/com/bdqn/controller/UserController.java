@@ -118,7 +118,7 @@ public class UserController {
         //随机生成4位数的验证码
        int str=(int)((Math.random()*9+1)*1000);
             phoneCode=str+"";
-           /* System.out.println(phoneCode);*/
+            System.out.println(phoneCode);
         try {
             //给用户手机发送验证码
             sendCode.sendSms(uphone,phoneCode);
