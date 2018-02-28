@@ -12,16 +12,25 @@ To change this template use File | Settings | File Templates.
     <meta charset="UTF-8">
     <title>京东</title>
     <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
-
+    <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
-<%--<script type="text/javascript">
-    if (null!=${user1}){
-        alert(user1);
-        var fl=document.getElementsByClassName("fl");
-        fl.innerHTML="你好用户"+${user1.uname};
-    }
-</script>--%>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var uname=$("#uname_1").val();
+        var login_status=  document.getElementById("login_status");
+        if(uname!=null||uname!=""){
+            login_status.innerHTML="欢迎用户："+uname;
+            var registrt_status=  document.getElementById("registrt_status");
+            registrt_status.innerHTML="  ";
+        }else{
+           var exit= document.getElementById("exit");
+            exit.text("");
+            exit.remove();
+        }
+    })
+
+</script>
 <!--网页头部-->
 <header>
     <div class="soubg">
@@ -32,13 +41,14 @@ To change this template use File | Settings | File Templates.
         </div>
         <div class="fr top_right">
             <div class="fl">
-               <c:if test="${user1}!=null">你好！&nbsp; ${user1.uname}用户</c:if>
-                <c:if test="${user1}!=null">你好!请<a href="userController/goLogin">登录</a>
-                    <a href="userController/goRegister" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</c:if>
+                <input type="hidden" id="uname_1" value="${user1.uname}">
+                <a href="userController/goLogin" id="login_status">你好!请登录</a>&nbsp;
+                <a href="userController/goRegister" style="color:#ff4e00;" id="registrt_status">免费注册</a>
+                <a href="goExit" id="exit">退出</a>
             </div>
             <ul class="ss">
                 <li class="ss_list">
-                    &nbsp;|<a href="#">我的订单</a>|
+                    <a href="#">我的订单</a>
                 </li>
                 <li class="ss_list">
                     <a href="#">收藏夹</a>
@@ -78,7 +88,7 @@ To change this template use File | Settings | File Templates.
 
     <div class="top">
         <div class="logo">
-            <a href="userController/getLogin">
+            <a href="goIndex">
                 <img src="../../statics/images/logo.png"/>
             </a>
         </div>
@@ -88,7 +98,7 @@ To change this template use File | Settings | File Templates.
                 <input type="submit" value="搜索" class="s_btn"/>
             </form>
             <div class="fl">
-                <a href="#">咖啡</a>
+                <a href="goProduct">咖啡</a>
                 <a href="#">iphone 6S</a>
                 <a href="#">新鲜美食</a>
                 <a href="#">蛋糕</a>

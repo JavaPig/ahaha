@@ -59,6 +59,17 @@ public class UserController {
             }
         }
     }
+    //去主页
+    @RequestMapping("goIndex")
+    public  String goIndex(){
+        return "index";
+    }
+    //退出登录
+    @RequestMapping("goExit")
+    public  String goExit(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "index";
+    }
 
     //注册
     @RequestMapping("goRegister")
@@ -132,8 +143,6 @@ public class UserController {
 
 
     }
-
-
     //地图
     @RequestMapping("getMap")
     public String getMap(Model model, HttpServletRequest request) {
@@ -151,8 +160,17 @@ public class UserController {
         model.addAttribute("ipSearchs", ipSearchs);
         return "BaiDuMap";
     }
+    //购物车
     @RequestMapping("mycart")
     public String mycart(){
         return "mycart";
     }
+
+
+    //去详情页
+    @RequestMapping("goProduct")
+    public  String goProduct(){
+        return "Product";
+    }
+
 }

@@ -1,11 +1,32 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
     <link type="text/css" rel="stylesheet" href="../../statics/css/style.css"/>
     <link rel="stylesheet" type="text/css" href="../../statics/css/ShopShow.css"/>
+    <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
     <title>珠韵首饰 冰韵 天然白色正圆S925银扣珍珠项链团购_1号团_1号店官网</title>
 </head>
+<script type="text/javascript">
+    $(document).ready(function () {
+       var uname=$("#uname_1").val();
+       if(uname!=null||uname!=""){
+        var login_status=  document.getElementById("login_status");
+           login_status.innerHTML="欢迎用户："+uname;
+         var registrt_status=  document.getElementById("registrt_status");
+           registrt_status.innerHTML="  ";
+       }else{
+           var exit= document.getElementById("exit");
+           exit.text("");
+
+       }
+    })
+
+</script>
+
+
+
 <body>
 <!--网页头部-->
 <header>
@@ -16,11 +37,14 @@
             </div>
         </div>
         <div class="fr top_right">
+            <input type="hidden" id="uname_1" value="${user1.uname}">
             <div class="fl">
-                你好!请<a href="userController/goLogin">登录</a>
-                <a href="userController/goRegister" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+                <a href="userController/goLogin" id="login_status">你好!请登录</a>&nbsp;
+                <a href="userController/goRegister" style="color:#ff4e00;" id="registrt_status">免费注册</a>
+                <a href="goExit" id="exit">退出</a>
             </div>
             <ul class="ss">
+                <li class="ss_list"><a href="#">我的订单</a></li>
                 <li class="ss_list">
                     <a href="#">收藏夹</a>
                 </li>
@@ -58,7 +82,7 @@
 
     <div class="top">
         <div class="logo">
-            <a href="#">
+            <a href="goIndex">
                 <img src="../../statics/images/logo.png"/>
             </a>
         </div>

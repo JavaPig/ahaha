@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -17,9 +18,11 @@
         <div class="fr top_right">
             <div class="fl">
                 你好!请<a href="userController/goLogin">登录</a>
-                <a href="userController/goRegister" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|
+                <a href="userController/goRegister" style="color:#ff4e00;">免费注册</a>
+                <a href="goExit" id="exit">退出</a>
             </div>
             <ul class="ss">
+                <li class="ss_list"><a href="#">我的订单</a></li>
                 <li class="ss_list">
                     <a href="#">收藏夹</a>
                 </li>
