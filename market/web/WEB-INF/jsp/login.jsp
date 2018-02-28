@@ -12,10 +12,13 @@
     <meta charset="UTF-8">
     <title>京东登录页</title>
     <link rel="stylesheet" href="../../statics/css/styles.css"/>
+    <script type="text/javascript" src="../../statics/js/jquery-1.8.3.min.js"></script>
 </head>
 <body>
 <script type="text/javascript">
-
+    $(".login-btn").click(function () {
+        alert(123)
+    })
 </script>
 <div class="wrap">
     <div class="logo-box">
@@ -24,12 +27,12 @@
     </div>
 </div>
 <div class="content">
-    <div class="wrap">
+    <div class="wrap" >
         <div style="height:475px;background:url(../../statics/images/banner.png) no-repeat left top">
             <div class="login-form">
                 <h2>京东会员 <a href="goRegister">立即注册</a></h2>
                 <span class="firstSpan">${error}</span>
-                <form action="doLogin" id="submit1" method="post" >
+                <form action="doLogin" id="submit1" method="post">
                     <div class="item">
                         <label for="name" class="left"
                                style="background:url(../../statics/images/login-icons.png) no-repeat;"></label>
@@ -45,7 +48,7 @@
                         <label for="auto">自动登录</label>
                         <a href="">忘记密码</a>
                     </div>
-                    <a  href="javascript:document:submit1.submit();" class="login-btn"  >登录</a>
+                    <a href="javascript:document:submit1.submit();" class="login-btn">登录</a>
                 </form>
             </div>
         </div>

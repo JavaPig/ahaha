@@ -25,6 +25,7 @@
                         "data": "uphone=" + uphone,//发送到服务器的数据
                         "dataType": "text",//指定返回的数据格式
                         "success": function (data) {
+
                         },//响应成功后要执行代码
                         /* "error"		: function() { //请求失败后要执行代码
                              alert("短信验证码错误！");
@@ -78,7 +79,6 @@
             }else {
             }
         })
-
     })
 </script>
 
